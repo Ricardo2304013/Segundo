@@ -1,0 +1,31 @@
+<div class="modal fade" id="insertarLibroModal" tabindex="-1" aria-labelledby="insertarLibroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="insertarLibroModalLabel">Agregar Nuevo Libro</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{{ url_for('insertar_libro') }}" onsubmit="mostrarAlertaAgregar(event)">
+                <div class="modal-body">
+                    {{ formulario.csrf_token }}
+                    <div class="mb-3">
+                        {{ formulario.titulo.label(class="form-label") }}
+                        {{ formulario.titulo(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ formulario.autor.label(class="form-label") }}
+                        {{ formulario.autor(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ formulario.editorial.label(class="form-label") }}
+                        {{ formulario.editorial(class="form-control") }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    {{ formulario.enviar(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="modal fade" id="editarLibroModal{{ libro.id }}" tabindex="-1" aria-labelledby="editarLibroModalLabel{{ libro.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editarLibroModalLabel{{ libro.id }}">Editar Libro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form method="POST" action="{{ url_for('editar_libro', id=libro.id) }}" onsubmit="mostrarAlertaEditar(event)">
+                <div class="modal-body">
+                    {{ formulario_editar.csrf_token }}
+                    <div class="mb-3">
+                        {{ formulario_editar.titulo.label(class="form-label") }}
+                        {{ formulario_editar.titulo(class="form-control", value=libro.titulo) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ formulario_editar.autor.label(class="form-label") }}
+                        {{ formulario_editar.autor(class="form-control", value=libro.autor) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ formulario_editar.editorial.label(class="form-label") }}
+                        {{ formulario_editar.editorial(class="form-control", value=libro.editorial) }}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
